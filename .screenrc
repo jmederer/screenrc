@@ -1,0 +1,68 @@
+# C-a :source .screenrc
+
+# Allow bold colors - necessary for some reason
+attrcolor b ".I"
+
+termcapinfo xterm* ti@:te@
+defshell /bin/bash
+startup_message off
+vbell off
+autodetach on
+altscreen on
+shelltitle "$ |bash"
+defscrollback 100000
+defutf8 on
+nonblock on
+
+#hardstatus alwayslastline
+
+#
+# look and feel for the bottom two lines.
+#
+#hardstatus alwayslastline "%?%{yk}%-Lw%?%{wb}%n*%f %t%?(%u)%?%?%{yk}%+Lw%?"
+
+#caption always '%{= wk} %200` %= %100` %='
+#caption    always        "%{+b rk}%H%{gk} |%c %{yk}%d.%m.%Y  %= | Load: %l %{wk} | %2` | %7` | Vol. %5` | %{R}%d %D %c "
+#caption    always        "%{+b rk}%H%{gk} %= | Load: %l %{wk} | %2` | %7` | Vol. %5` | %{R}%d %D %c "
+#hardstatus alwayslastline '%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?'
+
+
+caption    always        "%{+b wk} %H %{gk} %= %{gk} | %{wk} Load: %l %{gk} | %{wk}  %2` %{gk} | %{wk} %7` %{gk} | %{wk} Vol. %5` %{gk} | %{wk} %D %d.%m.%Y %c "
+hardstatus alwayslastline
+hardstatus string '%{= kG}%-Lw%{= kW}%50> %n*%f %t%{= kG}%+Lw%< %{= kG}%-='
+
+
+sorendition kw          # Change  the  way  screen does highlighting
+                        # for text marking and printing messages
+hardcopydir ~/.screen   # Defines a directory where hardcopy files will be placed
+
+# Backticks are small programs
+# which output appears in the hardstatus bar
+backtick 1 10 10 $HOME/bin/get_uptime
+backtick 2 10 10 $HOME/bin/get_cputemp
+backtick 3 10 10 $HOME/bin/get_freemem
+backtick 4 10 10 $HOME/bin/get_freeswap
+backtick 5 10 10 $HOME/bin/get_volume Master
+backtick 6 10 10 $HOME/bin/get_gmail
+backtick 7 10 10 $HOME/bin/get_battery
+
+bind = resize =
+bind + resize +1
+bind - resize -1
+bind _ resize max
+
+# CTRL-T fuer neuen TAB :-=
+bindkey "^T" screen
+
+# for shift UP and DOWN arrows
+#bindkey ^[[1;5A prev
+#bindkey ^[[1;5B next
+
+# for ctrl right and left arrows
+#bindkey ^[[1;5D prev
+#bindkey ^[[1;5C next
+
+
+ # for shift right and left arrows
+bindkey ^[[1;2D prev
+bindkey ^[[1;2C next
